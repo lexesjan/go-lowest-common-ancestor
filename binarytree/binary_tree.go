@@ -7,7 +7,12 @@ type BinaryTree struct {
 	Root *treenode.TreeNode
 }
 
-func lowestCommonAncestor(root, node1, node2, result *treenode.TreeNode) bool {
+func lowestCommonAncestor(
+	root *treenode.TreeNode,
+	node1 *treenode.TreeNode,
+	node2 *treenode.TreeNode,
+	result **treenode.TreeNode,
+) bool {
 	if root == nil {
 		return false
 	}
@@ -17,7 +22,7 @@ func lowestCommonAncestor(root, node1, node2, result *treenode.TreeNode) bool {
 	right := lowestCommonAncestor(root.Right, node1, node2, result)
 
 	if left && right || rootIsEitherNode && (left || right) {
-		*result = *root
+		*result = root
 	}
 
 	return left || right || rootIsEitherNode
@@ -33,8 +38,8 @@ func LowestCommonAncestor(tree *BinaryTree, node1, node2 *treenode.TreeNode) *tr
 		return node1
 	}
 
-	result := &treenode.TreeNode{}
+	var result **treenode.TreeNode = new(*treenode.TreeNode)
 	lowestCommonAncestor(tree.Root, node1, node2, result)
 
-	return result
+	return *result
 }
