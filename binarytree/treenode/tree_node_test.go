@@ -1,8 +1,6 @@
 package treenode
 
-import (
-	"testing"
-)
+import "testing"
 
 func TestNew(t *testing.T) {
 	expected := 0
