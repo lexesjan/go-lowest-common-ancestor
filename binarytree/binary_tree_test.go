@@ -119,6 +119,20 @@ var LowestCommonAncestorTests = []LowestCommonAncestorTest{
 		treenode.New(6),
 		nil,
 	},
+	{
+		"LCA should be nil",
+		&BinaryTree{Root: testBinaryTreeRoot},
+		testBinaryTreeRoot.Left.Left,
+		nil,
+		nil,
+	},
+	{
+		"LCA should be nil",
+		&BinaryTree{Root: testBinaryTreeRoot},
+		treenode.New(6),
+		treenode.New(6),
+		nil,
+	},
 }
 
 func TestLowestCommonAncestor(t *testing.T) {

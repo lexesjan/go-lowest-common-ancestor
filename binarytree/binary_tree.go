@@ -34,12 +34,12 @@ func LowestCommonAncestor(tree *BinaryTree, node1, node2 *treenode.TreeNode) *tr
 		return nil
 	}
 
-	if node1.Value == node2.Value {
+	var result **treenode.TreeNode = new(*treenode.TreeNode)
+	inputNodeExists := lowestCommonAncestor(tree.Root, node1, node2, result)
+
+	if inputNodeExists && node1.Value == node2.Value {
 		return node1
 	}
-
-	var result **treenode.TreeNode = new(*treenode.TreeNode)
-	lowestCommonAncestor(tree.Root, node1, node2, result)
 
 	return *result
 }
